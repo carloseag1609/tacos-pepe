@@ -1,26 +1,19 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {NativeRouter, Route, Routes} from 'react-router-native';
+import Categories from './src/screens/Categories';
+import Login from './src/screens/Login';
+import SplashScreen from './src/screens/SplashScreen';
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tacos Pepe</Text>
-    </View>
+    <NativeRouter>
+      <Routes>
+        <Route exact path="/" element={<SplashScreen />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/categories" element={<Categories />} />
+      </Routes>
+    </NativeRouter>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#EBD9C6',
-  },
-  title: {
-    color: '#A44306',
-    fontSize: 40,
-    fontWeight: 'bold',
-  },
-});
 
 export default App;

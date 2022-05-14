@@ -12,7 +12,9 @@
   "dependencies": {
     "glob": "7.2.0",
     "react": "17.0.2",
-    "react-native": "0.68.2"
+    "react-native": "0.68.2",
+    "react-native-vector-icons": "^9.1.0",
+    "react-router-native": "^6.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
