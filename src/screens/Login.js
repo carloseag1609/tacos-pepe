@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useNavigate} from 'react-router-native';
+import globalStyles from '../styles';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -14,52 +15,31 @@ const Login = () => {
   const [focus2, setFocus2] = useState(false);
 
   return (
-    <View style={styles.container} onTouchStart={() => console.log('asdasd')}>
-      <View style={styles.form}>
+    <View style={globalStyles.container}>
+      <View style={styles.formContainer}>
         <Text style={styles.title}>Iniciar</Text>
-        <View
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            height: 200,
-          }}>
+        <View style={styles.form}>
           <TextInput
             onFocus={() => setFocus1(true)}
             onBlur={() => setFocus1(false)}
-            style={[styles.input, focus1 && {borderColor: '#E46E14'}]}
+            style={[styles.input, focus1 && styles.yellowBorder]}
             placeholder="Correo electrónico"
           />
           <TextInput
             onFocus={() => setFocus2(true)}
             onBlur={() => setFocus2(false)}
-            style={[styles.input, focus2 && {borderColor: '#E46E14'}]}
+            style={[styles.input, focus2 && styles.yellowBorder]}
             placeholder="Contraseña"
           />
           <Text style={styles.forgotPassword}>¿Olvidaste tu contraseña?</Text>
         </View>
         <TouchableOpacity
-          onPress={() => navigate('/categories')}
+          onPress={() => navigate('/menu')}
           style={styles.loginButton}>
-          <Text style={{color: 'white', fontSize: 18}}>Entrar</Text>
+          <Text style={styles.btnText}>Entrar</Text>
         </TouchableOpacity>
-        <Text
-          style={{
-            color: '#A44306',
-            fontSize: 18,
-            fontWeight: '500',
-            marginTop: 20,
-          }}>
-          Ó
-        </Text>
-        <Text
-          style={{
-            color: '#A44306',
-            fontSize: 18,
-            fontWeight: '500',
-            marginTop: 20,
-            textDecorationLine: 'underline',
-          }}>
+        <Text style={styles.brownText}>Ó</Text>
+        <Text style={[styles.brownText, styles.textUnderlined]}>
           Registrarse
         </Text>
       </View>
@@ -68,14 +48,7 @@ const Login = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    backgroundColor: '#EBD9C6',
-    paddingTop: 60,
-  },
-  form: {
+  formContainer: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -85,6 +58,13 @@ const styles = StyleSheet.create({
     fontSize: 50,
     fontWeight: 'bold',
   },
+  form: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    height: 200,
+  },
+  yellowBorder: {borderColor: '#E46E14'},
   input: {
     height: 55,
     width: 300,
@@ -112,6 +92,16 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  btnText: {color: 'white', fontSize: 18},
+  brownText: {
+    color: '#A44306',
+    fontSize: 18,
+    fontWeight: '500',
+    marginTop: 20,
+  },
+  textUnderlined: {
+    textDecorationLine: 'underline',
   },
 });
 

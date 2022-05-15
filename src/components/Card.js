@@ -1,9 +1,10 @@
-import {View, Text, Image} from 'react-native';
+import {View, TouchableOpacity, Text, Image} from 'react-native';
 import React from 'react';
 
-const Card = ({id, name, description, url}) => {
+const Card = ({id, name, description, url, onPress}) => {
   return (
-    <View
+    <TouchableOpacity
+      onPress={onPress}
       style={{
         width: '100%',
         height: 250,
@@ -17,14 +18,14 @@ const Card = ({id, name, description, url}) => {
         style={{width: '100%', height: '65%', borderRadius: 10}}
       />
       <View style={{paddingHorizontal: 10, paddingVertical: 15}}>
-        <Text style={{fontSize: 20, color: '#4E3018', fontWeight: 'bold'}}>
+        <Text style={{fontSize: 22, color: '#4E3018', fontWeight: 'bold'}}>
           {name}
         </Text>
-        <Text style={{fontSize: 16, color: '#4E3018', fontWeight: 'normal'}}>
+        <Text style={{fontSize: 18, color: '#4E3018', fontWeight: 'normal'}}>
           {description}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

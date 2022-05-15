@@ -1,13 +1,11 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import {View, StyleSheet, FlatList} from 'react-native';
 import Card from '../components/Card';
-import TopNav from '../components/TopNav';
 import categoryTacosImage from '../../assets/category-tacos.jpg';
 import categoryTortasImage from '../../assets/category-tortas.jpg';
 import categoryBebidasImage from '../../assets/category-bebidas.jpg';
 import categoryExtrasImage from '../../assets/category-extras.jpg';
-import BottomNav from '../components/BottomNav';
+import {useNavigate} from 'react-router-native';
 
 const categoriesList = [
   {
@@ -36,17 +34,19 @@ const categoriesList = [
   },
 ];
 
-const Categories = () => {
+const Menu = () => {
+  const navigate = useNavigate();
   return (
     <View style={styles.container}>
-      <TopNav title="MENÚ" />
       <FlatList
         style={{width: '80%'}}
         data={categoriesList}
-        renderItem={({item}) => <Card {...item} />}
+        showsVerticalScrollIndicator={false}
+        renderItem={({item}) => (
+          <Card {...item} onPress={() => navigate('/menu/tacos')} />
+        )}
         keyExtractor={item => item.id}
       />
-      <BottomNav />
     </View>
   );
 };
@@ -80,4 +80,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Categories;
+export default Menu;
