@@ -112,7 +112,7 @@ const ScheduleOrder = () => {
           </Text>
         </View>
       </View>
-      <Button text="Siguiente" onPress={() => navigate('/orden/pago')} />
+      <Button text="Siguiente" onPress={() => navigate('/carrito/pago')} />
     </View>
   );
 };

@@ -25,7 +25,7 @@ const App = () => {
           <Route path="tacos" element={<Tacos />} />
           <Route path="detalles" element={<Details />} />
         </Route>
-        <Route path="orden" element={<MainLayout />}>
+        <Route path="carrito" element={<MainLayout />}>
           <Route index element={<ScheduleOrder />} />
           <Route path="pago" element={<Payment />} />
           <Route path="entrega" element={<Delivery />} />
@@ -33,6 +33,9 @@ const App = () => {
           <Route path="resumen" element={<Summary />} />
           <Route path="confirmacion" element={<Confirm />} />
         </Route>
+        {/* <Route path="carrito" element={<MainLayout />}>
+          <Route index element={<ScheduleOrder />} />
+        </Route> */}
       </Routes>
     </NativeRouter>
   );

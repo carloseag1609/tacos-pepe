@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, ToastAndroid} from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import {useNavigate} from 'react-router-native';
 
@@ -15,20 +15,19 @@ const items = [
 
 const placeholder = {
   label: 'Selecciona la sucursal',
-  value: items[0].label,
-  color: '#4E3018',
+  value: '',
 };
 
 const Sucursal = () => {
   const navigate = useNavigate();
+  const [sucursal, setSucursal] = useState();
+
   return (
     <View style={globalStyles.container}>
       <View
         style={{
           width: '90%',
           height: 300,
-          borderWidth: 1,
-          borderRadius: 10,
           borderColor: '#4E3018',
           alignItems: 'center',
           justifyContent: 'flex-start',
@@ -46,6 +45,9 @@ const Sucursal = () => {
         <RNPickerSelect
           placeholder={placeholder}
           style={{
+            placeholder: {
+              color: '#4E3018',
+            },
             fontSize: 16,
             paddingHorizontal: 10,
             paddingVertical: 8,
@@ -54,11 +56,21 @@ const Sucursal = () => {
             borderRadius: 8,
             color: 'black',
           }}
-          onValueChange={value => console.log(value)}
+          onValueChange={value => setSucursal(value)}
           items={items}
         />
       </View>
-      <Button text="Siguiente" onPress={() => navigate('/orden/resumen')} />
+      <Button
+        text="Siguiente"
+        // backgroundColor={!sucursal ? '#'}
+        onPress={() => {
+          if (!sucursal) {
+            ToastAndroid.show('Selecciona una sucursal', ToastAndroid.SHORT);
+          } else {
+            navigate('/carrito/resumen');
+          }
+        }}
+      />
     </View>
   );
 };

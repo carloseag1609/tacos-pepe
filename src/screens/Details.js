@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, View, Text, StyleSheet} from 'react-native';
+import {Image, View, Text, ToastAndroid, StyleSheet} from 'react-native';
 import {useNavigate} from 'react-router-native';
 import categoryTacosImage from '../../assets/category-tacos.jpg';
 import Button from '../components/Button';
@@ -50,7 +50,16 @@ const Details = () => {
           </Text>
         </View>
       </View>
-      <Button text="Comprar" onPress={() => navigate('/orden')} />
+      <Button
+        text="Agregar"
+        backgroundColor="#E46E14"
+        onPress={() => {
+          ToastAndroid.show(
+            'Paquete de tacos agregado al carrito',
+            ToastAndroid.SHORT,
+          );
+        }}
+      />
     </View>
   );
 };

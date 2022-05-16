@@ -12,10 +12,6 @@ const Summary = () => {
       <View
         style={{
           width: '90%',
-          height: 300,
-          borderWidth: 1,
-          borderRadius: 10,
-          borderColor: '#4E3018',
           alignItems: 'center',
           justifyContent: 'flex-start',
           paddingTop: 20,
@@ -117,7 +113,11 @@ const Summary = () => {
           </View>
         </View>
       </View>
-      <Button text="Pagar" onPress={() => navigate('/orden/confirmacion')} />
+      <Button
+        text="Pagar"
+        backgroundColor={'#649757'}
+        onPress={() => navigate('/carrito/confirmacion')}
+      />
     </View>
   );
 };

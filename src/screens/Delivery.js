@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, TouchableOpacity, ToastAndroid} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useNavigate} from 'react-router-native';
 
@@ -8,18 +8,19 @@ import globalStyles from '../styles';
 
 const Delivery = () => {
   const navigate = useNavigate();
+  const [optSelected, setoptSelected] = useState();
+
   return (
     <View style={globalStyles.container}>
       <View
         style={{
           width: '90%',
           height: 300,
-          borderWidth: 1,
-          borderRadius: 10,
           borderColor: '#4E3018',
           alignItems: 'center',
           justifyContent: 'flex-start',
           paddingTop: 20,
+          marginBottom: 20,
         }}>
         <Text
           style={{
@@ -29,8 +30,23 @@ const Delivery = () => {
           }}>
           Elige tu método de entrega
         </Text>
-        <View
-          style={{flexDirection: 'row', alignItems: 'center', marginTop: 50}}>
+        <TouchableOpacity
+          onPress={() => {
+            setoptSelected('llevar');
+            ToastAndroid.show('Para llevar seleccionado', ToastAndroid.SHORT);
+          }}
+          style={{
+            width: '90%',
+            flexDirection: 'row',
+            alignItems: 'center',
+            borderWidth: 1,
+            borderColor: '#4E3018',
+            borderRadius: 10,
+            padding: 10,
+            marginTop: 50,
+            backgroundColor:
+              optSelected === 'llevar' ? '#E9CDAF' : 'transparent',
+          }}>
           <View
             style={{
               width: 60,
@@ -38,23 +54,47 @@ const Delivery = () => {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Icon name="storefront" color="#4E3018" style={{fontSize: 30}} />
+            <Icon name="storefront" color="#4E3018" style={{fontSize: 35}} />
           </View>
-          <Text
+          <View
             style={{
-              color: '#4E3018',
-              fontSize: 20,
-              marginLeft: 10,
-              maxWidth: 150,
+              alignItems: 'flex-start',
+              width: '50%',
+              marginLeft: 20,
             }}>
-            En restaurante
-          </Text>
-        </View>
-        <View
+            <Text
+              style={{
+                color: '#4E3018',
+                fontWeight: '600',
+                fontSize: 20,
+              }}>
+              Para llevar
+            </Text>
+            <Text
+              style={{
+                color: '#4E3018',
+                fontSize: 16,
+              }}>
+              Recógelo en sucursal
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            setoptSelected('domicilio');
+            ToastAndroid.show('A domicilio seleccionado', ToastAndroid.SHORT);
+          }}
           style={{
+            width: '90%',
             flexDirection: 'row',
             alignItems: 'center',
+            borderWidth: 1,
+            borderColor: '#4E3018',
+            borderRadius: 10,
+            padding: 10,
             marginTop: 20,
+            backgroundColor:
+              optSelected === 'domicilio' ? '#E9CDAF' : 'transparent',
           }}>
           <View
             style={{
@@ -66,21 +106,34 @@ const Delivery = () => {
             <Icon
               name="delivery-dining"
               color="#4E3018"
-              style={{fontSize: 30}}
+              style={{fontSize: 35}}
             />
           </View>
-          <Text
+          <View
             style={{
-              color: '#4E3018',
-              fontSize: 20,
-              marginLeft: 10,
-              maxWidth: 150,
+              alignItems: 'flex-start',
+              width: '60%',
+              marginLeft: 20,
             }}>
-            A domicilio
-          </Text>
-        </View>
+            <Text
+              style={{
+                color: '#4E3018',
+                fontWeight: '600',
+                fontSize: 20,
+              }}>
+              A domicilio
+            </Text>
+            <Text
+              style={{
+                color: '#4E3018',
+                fontSize: 16,
+              }}>
+              Lo llevamos hasta tu casa
+            </Text>
+          </View>
+        </TouchableOpacity>
       </View>
-      <Button text="Siguiente" onPress={() => navigate('/orden/sucursal')} />
+      <Button text="Siguiente" onPress={() => navigate('/carrito/sucursal')} />
     </View>
   );
 };

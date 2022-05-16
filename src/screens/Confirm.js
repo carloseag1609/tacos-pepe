@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useNavigate} from 'react-router-native';
 import Button from '../components/Button';
@@ -8,17 +8,15 @@ import globalStyles from '../styles';
 const Confirm = () => {
   const navigate = useNavigate();
   return (
-    <View style={globalStyles.container}>
+    <ScrollView contentContainerStyle={globalStyles.container}>
       <View
         style={{
           width: '90%',
           height: 420,
-          borderWidth: 1,
-          borderRadius: 10,
-          borderColor: '#4E3018',
           alignItems: 'center',
           justifyContent: 'flex-start',
           paddingTop: 20,
+          marginBottom: 40,
         }}>
         <View
           style={{
@@ -189,7 +187,7 @@ const Confirm = () => {
         </View>
       </View>
       <Button text="Continuar Comprando" onPress={() => navigate('/menu')} />
-    </View>
+    </ScrollView>
   );
 };
 

@@ -4,7 +4,7 @@ import React from 'react';
 const Button = ({text, onPress, backgroundColor}) => {
   return (
     <TouchableOpacity
-      style={[styles.btn, {backgroundColor: backgroundColor || '#649757'}]}
+      style={[styles.btn, {backgroundColor: backgroundColor || '#E46E14'}]}
       onPress={onPress}>
       <Text style={{color: 'white', fontSize: 18}}>{text}</Text>
     </TouchableOpacity>

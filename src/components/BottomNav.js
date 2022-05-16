@@ -37,18 +37,19 @@ const BottomNav = () => {
       </TouchableOpacity>
       <View style={styles.navItem}>
         <Icon
-          name="shopping-bag"
+          name="shopping-cart"
           style={{
             fontSize: 35,
-            color: currentLocation === 'pedidos' ? '#E46E14' : '#4E3018',
+            color: pathname.includes('carrito') ? '#E46E14' : '#4E3018',
           }}
+          onPress={() => navigate('/carrito')}
         />
         <Text
           style={{
-            color: currentLocation === 'pedidos' ? '#E46E14' : '#4E3018',
+            color: pathname.includes('carrito') ? '#E46E14' : '#4E3018',
             fontWeight: '600',
           }}>
-          Pedidos
+          Carrito
         </Text>
       </View>
       <View style={styles.navItem}>
