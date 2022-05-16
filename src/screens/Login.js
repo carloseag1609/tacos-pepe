@@ -5,12 +5,15 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  ToastAndroid,
 } from 'react-native';
 import {useNavigate} from 'react-router-native';
 import globalStyles from '../styles';
 
 const Login = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [focus1, setFocus1] = useState(false);
   const [focus2, setFocus2] = useState(false);
 
@@ -22,19 +25,28 @@ const Login = () => {
           <TextInput
             onFocus={() => setFocus1(true)}
             onBlur={() => setFocus1(false)}
+            onChangeText={text => setEmail(text)}
             style={[styles.input, focus1 && styles.yellowBorder]}
             placeholder="Correo electrónico"
           />
           <TextInput
             onFocus={() => setFocus2(true)}
             onBlur={() => setFocus2(false)}
+            secureTextEntry={true}
+            onChangeText={text => setPassword(text)}
             style={[styles.input, focus2 && styles.yellowBorder]}
             placeholder="Contraseña"
           />
           <Text style={styles.forgotPassword}>¿Olvidaste tu contraseña?</Text>
         </View>
         <TouchableOpacity
-          onPress={() => navigate('/menu')}
+          onPress={() => {
+            if (email.trim().length === 0 || password.trim().length === 0) {
+              ToastAndroid.show('Ingresa tus credenciales', ToastAndroid.SHORT);
+            } else {
+              navigate('/menu');
+            }
+          }}
           style={styles.loginButton}>
           <Text style={styles.btnText}>Entrar</Text>
         </TouchableOpacity>
