@@ -133,7 +133,19 @@ const Delivery = () => {
           </View>
         </TouchableOpacity>
       </View>
-      <Button text="Siguiente" onPress={() => navigate('/carrito/sucursal')} />
+      <Button
+        text="Siguiente"
+        onPress={() => {
+          if (!optSelected) {
+            ToastAndroid.show(
+              'Selecciona un metodo de entrega',
+              ToastAndroid.SHORT,
+            );
+          } else {
+            navigate('/carrito/sucursal');
+          }
+        }}
+      />
     </View>
   );
 };

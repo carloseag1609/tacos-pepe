@@ -8,7 +8,8 @@ import globalStyles from '../styles';
 const Confirm = () => {
   const navigate = useNavigate();
   return (
-    <ScrollView contentContainerStyle={globalStyles.container}>
+    <ScrollView
+      contentContainerStyle={[globalStyles.container, {paddingTop: 20}]}>
       <View
         style={{
           width: '90%',

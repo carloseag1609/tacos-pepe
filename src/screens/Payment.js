@@ -131,7 +131,14 @@ const Payment = () => {
       <Button
         text="Siguiente"
         onPress={() => {
-          navigate('/carrito/entrega');
+          if (!optSelected) {
+            ToastAndroid.show(
+              'Selecciona un metodo de pago',
+              ToastAndroid.SHORT,
+            );
+          } else {
+            navigate('/carrito/entrega');
+          }
         }}
       />
     </View>
